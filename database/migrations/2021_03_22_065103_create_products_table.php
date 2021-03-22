@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->unsignedBigInteger('customer');
             $table->unsignedBigInteger('category');
             $table->text('product_number');
+            $table->integer('stock_amount');
             $table->enum('status', ['active', 'passive', 'pending'])->default('pending');
             $table->double('rating');
             $table->timestamps();
