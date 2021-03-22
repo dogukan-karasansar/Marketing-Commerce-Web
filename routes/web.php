@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,13 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+//AUTH ROUTES
+Auth::routes();
+Route::get('register/customer', function () {
+    return view('auth.customer');
+})->name('customer-login');
+
+
+//PRODUCT ROUTES
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
