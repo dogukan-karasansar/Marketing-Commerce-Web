@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Routing\RouteGroup;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('products');
 });
 
 //AUTH ROUTES
@@ -24,6 +25,10 @@ Route::get('register/customer', function () {
     return view('auth.customer');
 })->name('customer-login');
 
+//CUSTOMER ROUTES
+Route::name('customer')->prefix('customer')->middleware('customer')->group(function () {
+     Route::get('', function () {
+         return view('customer.home');
+     });
+});
 
-//PRODUCT ROUTES
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
